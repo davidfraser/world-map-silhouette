@@ -9,6 +9,10 @@ https://www.naturalearthdata.com/downloads/10m-physical-vectors/
 The projection used is [Tobler Hyperelliptical](https://en.wikipedia.org/wiki/Tobler_hyperelliptical_projection),
 with the standard parameters (α=0, k=2.5, γ=1.183136).
 
+It also contains an export of [an Observable HQ page](https://observablehq.com/@davidfrasergo/toblers-parameterised-with-tissots-indicatrix)
+that displays Tissot's indicatrix on a world map using Tobler's projection, allowing interactive changing of parameters.
+This is in `observablehq-tobler-tissot/`.
+
 Setup
 =====
 
