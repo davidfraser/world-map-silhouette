@@ -2,71 +2,17 @@ import define1 from "./e93997d5089d7165@2303.js";
 import define2 from "./3df1b33bb2cfcd3c@475.js";
 import define3 from "./1713dcdd0861b14d@1366.js";
 
-function _1(tex,md){return(
-md`# Tobler’s hyperelliptical projection (1973)
+function _1(md){return(
+md`# Tobler’s hyperelliptical projection, parameterised, showing Tissot's indicatrix
 
-Waldo R. Tobler’s hyperelliptical projection is available from [d3-geo-projection](https://github.com/d3/d3-geo-projection#geoHyperelliptical) v2.4.0.
-This projection is based on hyperellipses (aka Lamé curves), governed by the equation:
+This page shows a world map using Tobler's hyperelliptical project, allowing modification of the parameters provided in that projection.
+It also displays Tissot's indicatrix at 15 degree intervals on that map.
+(I could find other pages on the web showing Tobler's projection, including Tissot's indicatrix, but none that combined both adjusting the parameters and the indicatrix)
 
-${tex`x^k+y^k = 1`}.
-
-Three parameters control its shape. In all instances, it is an equal-area projection.
-
-Reference: Waldo R. Tobler, “The hyperelliptical and other new pseudocylindrical equal area map projections,” _Journal of Geophysical Research_, 78 (11): 1753–1759, 1973.`
+Further notes on the projection and the indicatrix are below...`
 )}
 
-function _TOBLER(map,tobler){return(
-map(tobler)
-)}
-
-function _k(slider){return(
-slider({
-  min: 0.3, 
-  max: 8, 
-  step: 0.1, 
-  value: 2.5, 
-  title: "k", 
-  description: `exponent`
-})
-)}
-
-function _gamma(slider){return(
-slider({
-  min: 0, 
-  max: 10, 
-  step: 0.1, 
-  value: 1.183136, 
-  title: "gamma", 
-  description: `factor controlling the aspect ratio`
-})
-)}
-
-function _alpha(slider){return(
-slider({
-  min: 0, 
-  max: 1, 
-  step: 0.01, 
-  value: 0, 
-  title: "alpha", 
-  description: `weight of the cylindrical projection averaged with the hyperellipse`
-})
-)}
-
-function _6(md){return(
-md`-----
-_Technical zone_`
-)}
-
-function _tobler(d3,alpha,k,gamma){return(
-d3.geoHyperelliptical()
-    .alpha(alpha)
-    .k(k)
-    .gamma(gamma)
-    .clipAngle(0) // you can make this 0 or 90
-    .angle(0)
-)}
-
-function _8(width,d3,DOM,tobler,land,sphere,geoTissot,deg,projection,html)
+function _2(width,d3,DOM,tobler,land,sphere,geoTissot,deg,projection,html)
 {
   const w = width, height = width * 0.6;
  
@@ -191,19 +137,87 @@ function drawIndicatrix(lon, lat, projection) {
 }
 
 
+function _k(slider){return(
+slider({
+  min: 0.3, 
+  max: 8, 
+  step: 0.1, 
+  value: 2.5, 
+  title: "k", 
+  description: `exponent`
+})
+)}
+
+function _gamma(slider){return(
+slider({
+  min: 0, 
+  max: 10, 
+  step: 0.1, 
+  value: 1.183136, 
+  title: "gamma", 
+  description: `factor controlling the aspect ratio`
+})
+)}
+
+function _alpha(slider){return(
+slider({
+  min: 0, 
+  max: 1, 
+  step: 0.01, 
+  value: 0, 
+  title: "alpha", 
+  description: `weight of the cylindrical projection averaged with the hyperellipse`
+})
+)}
+
+function _6(md){return(
+md`## Tobler's hyperelliptical projection, without Tissot's Indicatrix`
+)}
+
+function _TOBLER(map,tobler){return(
+map(tobler)
+)}
+
+function _8(tex,md){return(
+md`## Tobler's hyperelliptical projection (1973)
+
+Waldo R. Tobler’s hyperelliptical projection is available from [d3-geo-projection](https://github.com/d3/d3-geo-projection#geoHyperelliptical) v2.4.0.
+This projection is based on hyperellipses (aka Lamé curves), governed by the equation:
+
+${tex`x^k+y^k = 1`}.
+
+Three parameters control its shape. In all instances, it is an equal-area projection.
+
+Reference: Waldo R. Tobler, “The hyperelliptical and other new pseudocylindrical equal area map projections,” _Journal of Geophysical Research_, 78 (11): 1753–1759, 1973.`
+)}
+
 function _9(md){return(
-md`# Tissot's indicatrix
+md`-----
+_Technical zone_`
+)}
+
+function _tobler(d3,alpha,k,gamma){return(
+d3.geoHyperelliptical()
+    .alpha(alpha)
+    .k(k)
+    .gamma(gamma)
+    .clipAngle(0) // you can make this 0 or 90
+    .angle(0)
+)}
+
+function _11(md){return(
+md`## Tissot's indicatrix
 
 When thinking about [Tissot's indicatrix](https://en.wikipedia.org/wiki/Tissot%27s_indicatrix), probably most people imagine it as a tool to visualize spatial change in distortion, illustrated by more or less elliptical shapes placed across a map. In most instances, however, these visualizations [don't show true indicatrices](https://observablehq.com/@d3/tissots-indicatrix), but projected circles placed around a reference point at a given radius, that give an intuitive representation of areal and shape distortion on a map. So what are *true Tissot's indicatrices* then?
 
 [Nicolas Auguste Tissot](https://en.wikipedia.org/wiki/Nicolas_Auguste_Tissot) published his classic analysis on the distortion on maps in 1859 and 1881. The basic idea is that the intersection of any two lines on the Earth is represented on the flat map with an intersection at the same or a different angle. He proved that at almost every point on the Earth, there's a right angle intersection of two lines in *some* direction which are also shown at right angles on the map. All the other intersections at that point will not intersect at the same angle on the map, unless the map is conformal, at least at that point.`
 )}
 
-function _10(md,tex){return(
+function _12(md,tex){return(
 md`Tissot showed this relationship graphically with a special *ellipse of distortion* called an *indicatrix* by computing partial derivatives at specific points. An infinitely small circle on the Earth projects as an infinitely small, but perfect, ellipse on any map projection. If the projection is conformal, the ellipse is a circle, an ellipse of zero eccentricity. Otherwise, the ellipse has a major axis ${tex`a`} and minor axis ${tex`b`} which are directly related to the *maximum angular deformation* ${tex`\omega`} and to the *areal scale distortion* ${tex`s`}.`
 )}
 
-function _11(md){return(
+function _13(md){return(
 md`To start our investigation we create a set of control points, that we can pass to the \`geoTissot\` generator function. It's a regular grid of points over the canvas area, reprojected to longitude and latitude and formatted as a GeoJSON object.`
 )}
 
@@ -219,7 +233,7 @@ function _geojson(d3,h,resolution,w,projection)
 }
 
 
-function _13(md){return(
+function _15(md){return(
 md`The next step is to initialize the generator function and specify the [D3 projection](https://github.com/d3/d3-geo#projections) for which we want to create the *indicatrices*:`
 )}
 
@@ -227,7 +241,7 @@ function _tissot(geoTissot,projection){return(
 geoTissot().projection(projection)
 )}
 
-function _15(md){return(
+function _17(md){return(
 md`Finally we pass the grid of control points to the indicatrix generator. It accepts any GeoJSON object and computes indicatrices for every coordinate pair of the input geometry.`
 )}
 
@@ -235,7 +249,7 @@ function _data(tissot,geojson){return(
 tissot(geojson)
 )}
 
-function _17(md,tex){return(
+function _19(md,tex){return(
 md`The return value is an array of *indicatrices* with the following properties:
 
 \`coordinates\` - longitude and latitude of the indicatrix  
@@ -257,7 +271,7 @@ tobler // d3.geoAlbers()
   .translate([w / 2, h / 2])
 )}
 
-function _19(md){return(
+function _21(md){return(
 md`Based on:
 
 <small>
@@ -274,7 +288,7 @@ References:
 </small>`
 )}
 
-function _20(md){return(
+function _22(md){return(
 md`---
 ## Implementation`
 )}
@@ -375,7 +389,7 @@ function _geoTissot(d3)
 }
 
 
-function _22(md){return(
+function _24(md){return(
 md`---
 ## Appendix`
 )}
@@ -468,7 +482,7 @@ function _land(topojson,world){return(
 topojson.feature(world, world.objects.land)
 )}
 
-function _38(md){return(
+function _40(md){return(
 md`---`
 )}
 
@@ -495,8 +509,8 @@ require("chroma-js")
 
 export default function define(runtime, observer) {
   const main = runtime.module();
-  main.variable(observer()).define(["tex","md"], _1);
-  main.variable(observer("TOBLER")).define("TOBLER", ["map","tobler"], _TOBLER);
+  main.variable(observer()).define(["md"], _1);
+  main.variable(observer()).define(["width","d3","DOM","tobler","land","sphere","geoTissot","deg","projection","html"], _2);
   main.variable(observer("viewof k")).define("viewof k", ["slider"], _k);
   main.variable(observer("k")).define("k", ["Generators", "viewof k"], (G, _) => G.input(_));
   main.variable(observer("viewof gamma")).define("viewof gamma", ["slider"], _gamma);
@@ -504,22 +518,24 @@ export default function define(runtime, observer) {
   main.variable(observer("viewof alpha")).define("viewof alpha", ["slider"], _alpha);
   main.variable(observer("alpha")).define("alpha", ["Generators", "viewof alpha"], (G, _) => G.input(_));
   main.variable(observer()).define(["md"], _6);
-  main.variable(observer("tobler")).define("tobler", ["d3","alpha","k","gamma"], _tobler);
-  main.variable(observer()).define(["width","d3","DOM","tobler","land","sphere","geoTissot","deg","projection","html"], _8);
+  main.variable(observer("TOBLER")).define("TOBLER", ["map","tobler"], _TOBLER);
+  main.variable(observer()).define(["tex","md"], _8);
   main.variable(observer()).define(["md"], _9);
-  main.variable(observer()).define(["md","tex"], _10);
+  main.variable(observer("tobler")).define("tobler", ["d3","alpha","k","gamma"], _tobler);
   main.variable(observer()).define(["md"], _11);
-  main.variable(observer("geojson")).define("geojson", ["d3","h","resolution","w","projection"], _geojson);
+  main.variable(observer()).define(["md","tex"], _12);
   main.variable(observer()).define(["md"], _13);
-  main.variable(observer("tissot")).define("tissot", ["geoTissot","projection"], _tissot);
+  main.variable(observer("geojson")).define("geojson", ["d3","h","resolution","w","projection"], _geojson);
   main.variable(observer()).define(["md"], _15);
+  main.variable(observer("tissot")).define("tissot", ["geoTissot","projection"], _tissot);
+  main.variable(observer()).define(["md"], _17);
   main.variable(observer("data")).define("data", ["tissot","geojson"], _data);
-  main.variable(observer()).define(["md","tex"], _17);
+  main.variable(observer()).define(["md","tex"], _19);
   main.variable(observer("projection")).define("projection", ["tobler","w","h"], _projection);
-  main.variable(observer()).define(["md"], _19);
-  main.variable(observer()).define(["md"], _20);
-  main.variable(observer("geoTissot")).define("geoTissot", ["d3"], _geoTissot);
+  main.variable(observer()).define(["md"], _21);
   main.variable(observer()).define(["md"], _22);
+  main.variable(observer("geoTissot")).define("geoTissot", ["d3"], _geoTissot);
+  main.variable(observer()).define(["md"], _24);
   main.variable(observer("w")).define("w", ["width"], _w);
   main.variable(observer("h")).define("h", ["w"], _h);
   main.variable(observer("resolution")).define("resolution", _resolution);
@@ -536,7 +552,7 @@ export default function define(runtime, observer) {
   main.variable(observer("graticule")).define("graticule", ["d3"], _graticule);
   main.variable(observer("countries")).define("countries", ["topojson","world"], _countries);
   main.variable(observer("land")).define("land", ["topojson","world"], _land);
-  main.variable(observer()).define(["md"], _38);
+  main.variable(observer()).define(["md"], _40);
   main.variable(observer("world")).define("world", _world);
   main.variable(observer("d3")).define("d3", ["require"], _d3);
   main.variable(observer("topojson")).define("topojson", ["require"], _topojson);

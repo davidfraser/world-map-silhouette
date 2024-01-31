@@ -1,6 +1,6 @@
-# Tobler’s hyperelliptical projection (1973)
+# Tobler’s hyperelliptical projection, parameterised, showing Tissot's indicatrix
 
-https://observablehq.com/d/4065e7dbe567019f@4977
+https://observablehq.com/d/4065e7dbe567019f@5000
 
 View this notebook in your browser by running a web server in this folder. For
 example:
@@ -14,7 +14,7 @@ import this module directly into your application. To npm install:
 
 ~~~sh
 npm install @observablehq/runtime@5
-npm install https://api.observablehq.com/d/4065e7dbe567019f@4977.tgz?v=3
+npm install https://api.observablehq.com/d/4065e7dbe567019f@5000.tgz?v=3
 ~~~
 
 Then, import your notebook and the runtime as:
