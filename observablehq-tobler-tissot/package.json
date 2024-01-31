@@ -1,0 +1,14 @@
+{
+  "name": "4065e7dbe567019f",
+  "main": "4065e7dbe567019f@4977.js",
+  "version": "4977.0.0",
+  "homepage": "https://observablehq.com/d/4065e7dbe567019f",
+  "author": {
+    "name": "David Fraser's Workspace",
+    "url": "https://observablehq.com/@david-fraser-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
